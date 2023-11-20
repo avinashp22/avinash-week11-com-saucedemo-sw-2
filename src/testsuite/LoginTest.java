@@ -6,6 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class LoginTest extends BaseTest {
 
@@ -26,6 +29,18 @@ public class LoginTest extends BaseTest {
 
     }
 
+    @Test
+    public void verifyThatSixProductsAreDisplayedOnPage(){
+
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        List<WebElement> products = driver.findElements(By.xpath("//div[@class = 'inventory_item']"));
+        int actual = products.size();
+        int expected = 6;
+        Assert.assertEquals("Correct Amount not Displayed",expected,actual);
+
+    }
 
     @After
     public void tearDown(){closeBrowser();}
