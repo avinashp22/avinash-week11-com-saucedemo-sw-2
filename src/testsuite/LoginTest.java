@@ -1,3 +1,20 @@
+/**
+ * 2. Create the package ‘testsuite’ and create the following class inside the ‘testsuite’ package.
+ * 1. LoginTest
+ * 3. Write down the following test into ‘LoginTest’ class
+ * 1. userSholdLoginSuccessfullyWithValid Credentials
+ * * Enter “standard_user” username
+ * * Enter “secret_sauce” password
+ * * Click on ‘LOGIN’ button
+ * * Verify the text “PRODUCTS”
+ * 2. verifyThatSixProductsAreDisplayedOnPage
+ * * Enter “standard_user” username
+ * * Enter “secret_sauce” password
+ * * Click on ‘LOGIN’ button
+ * * Verify that six products are displayed on page
+ */
+
+
 package testsuite;
 
 import browserfactory.BaseTest;
@@ -37,7 +54,9 @@ public class LoginTest extends BaseTest {
         driver.findElement(By.id("login-button")).click();
         List<WebElement> products = driver.findElements(By.xpath("//div[@class = 'inventory_item']"));
         int actual = products.size();
+        System.out.println("Actual Product Items Found : " + actual);
         int expected = 6;
+        System.out.println("Expected Product Items : " + expected);
         Assert.assertEquals("Correct Amount not Displayed",expected,actual);
 
     }
